@@ -1,0 +1,20 @@
+name: Unzip Files
+
+on:
+  workflow_dispatch:  # يمكنك تشغيله يدويًا من واجهة Actions
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2
+
+      - name: Unzip the file
+        run: |
+          # تأكد من وجود ملف ZIP في المستودع
+          if [ -f "22222.zip" ]; then
+            unzip 22222.zip -d ./unzipped_files/  # فك ضغط الملف إلى مجلد unzipped_files
+          else
+            echo "File 22222.zip not found!"
+          fi
